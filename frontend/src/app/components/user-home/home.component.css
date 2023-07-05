@@ -1,0 +1,181 @@
+:host{
+    grid-area: content;
+}
+
+.main{
+    width: 100%;
+    height: 100%;
+    background:  url("https://images.pexels.com/photos/3038740/pexels-photo-3038740.jpeg") no-repeat;
+    background-size: 100% 100%;
+    display: grid;
+    grid-template-areas: 
+    "empty"
+    "info"
+    "stats"
+    "search";
+    grid-template-rows: 20% 40% 30% 10%;
+    grid-template-columns: auto;
+    transition:  all 0.4s;
+}
+
+.main.search{
+    grid-template-rows: 10% 40% 30% 20%;
+}
+.info-container{
+    grid-area: info;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info{
+    height: 80%;
+    width: 100%;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: right;
+    color: white;
+    text-shadow: 0px 2px 10px black;
+}
+
+.info h1{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.info p{
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-shadow: 0px 2px 7px black;
+
+}
+
+.stats-container{
+    grid-area: stats;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.stats-container.active{
+    opacity: 1;
+}
+
+.stats{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.user-count , .product-count ,.review-count {
+    width: 15%;
+    height: 0;
+    color: white;
+    background-color: rgb(0, 0, 0,0.3);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: block;
+    transition: height 1s ease;
+    gap: 10px;
+    padding: 5px;
+}
+
+.user-count.active , .product-count.active ,.review-count.active{
+    height:  80%;
+}
+
+.icon{
+    font-size: 2.5rem;
+    text-shadow: 3px 4px 3px black;
+}
+
+.count{
+    font-size: 1rem;
+    text-align: center;
+}
+
+.search-div{
+    grid-area: search;
+    display: flex;
+    justify-content: center;
+}
+
+#search-box{
+    width: 40%;
+    height: 40px;
+    border-radius: 50px;
+    border: 2px solid;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-color: rgb(48, 157, 123);
+    background-color: white;
+}
+
+#search-box a{
+    font-size: 1.3rem;
+    color:rgb(48, 157, 123);
+}
+
+#search-input{
+    width: 80%;
+    border: none;
+    outline: none;
+}
+
+
+@media screen and (max-width: 880px){
+    .icon{
+        font-size: 1.8rem;
+    }
+    
+    .count{
+        font-size: 1rem;
+    }
+
+    .info h1{
+        font-size: 2rem;
+    }
+    
+    .info p{
+        font-size: 1rem;    
+    }
+}
+
+@media  screen and (max-width: 742px) {
+    .main{
+        height: 150%;
+        background-size: cover;
+        background-position: 50%;
+    }
+
+    .search-div{
+        align-items: center;
+    }
+
+    .stats{
+        flex-direction: column;
+    }
+
+    .user-count , .product-count ,.review-count {
+        width: 40%;
+    }
+
+    .info{
+        text-align: center;
+    }
+}

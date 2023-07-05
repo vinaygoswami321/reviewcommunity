@@ -1,0 +1,111 @@
+<main>
+  <div *ngIf = "userRegisterSuccess" class="success-div"><h4 class="text-success">User Registered</h4></div>
+  <div *ngIf = "userRegisterUnSuccess" class="success-div"><h4 class="text-danger">{{errorMessage}}</h4></div>
+  <div class="register-container" [class.invalid] = "isInvalid()">
+    <div class="register-heading"><h2>Register</h2></div>
+    <div class="register-form" [class.invalid] = "isInvalid()">
+      <form (ngSubmit) = "onSubmit()">
+        <div class="row mb-3 justify-content-center">
+          <label for="email" class="col-sm-4 col-form-label">Email</label>
+          <div class="col-sm-6">
+            <input
+              type="email"
+              class="form-control"
+              [class.is-valid]="emailValid"
+              [class.is-invalid]="emailInValid"
+              id="email"
+              name="email"
+              [(ngModel)]="email"
+              required
+            />
+            <div id="emailFeedback" class="invalid-feedback">
+              Please provide a valid email.
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3 justify-content-center">
+          <label for="firstName" class="col-sm-4 col-form-label"
+            >First Name</label
+          >
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              [class.is-valid]="firstNameValid"
+              [class.is-invalid]="firstNameInValid"
+              id="firstName"
+              name="firstName"
+              [(ngModel)]="firstName"
+              required
+            />
+            <div id="firstNameFeedback" class="invalid-feedback">
+              Please provide a valid first name.
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3 justify-content-center">
+          <label for="lastName" class="col-sm-4 col-form-label">Last Name</label>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control"
+              [class.is-valid]="lastNameValid"
+              [class.is-invalid]="lastNameInValid"
+              id="lastName"
+              name="lastName"
+              [(ngModel)]="lastName"
+              required
+            />
+            <div id="lastNameFeedback" class="invalid-feedback">
+              Please provide a valid lastname.
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3 justify-content-center">
+          <label for="password" class="col-sm-4 col-form-label">Password</label>
+          <div class="col-sm-6">
+            <input
+              type="password"
+              class="form-control"
+              [class.is-valid]="passwordValid"
+              [class.is-invalid]="passwordInValid"
+              id="password"
+              name="password"
+              [(ngModel)]="password"
+              required
+            />
+            <div id="passwordFeedback" class="invalid-feedback">
+              Password must be at least 8 characters long and contain 1 uppercase, 1 lowercase, 1 special character and 1 number.
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3 justify-content-center">
+          <label for="confirmPassword" class="col-sm-4 col-form-label"
+            >Confirm Password</label
+          >
+          <div class="col-sm-6">
+            <input
+              type="password"
+              class="form-control"
+              [class.is-valid]="confirmPasswordValid"
+              [class.is-invalid]="confirmPasswordInValid"
+              id="confirmPassword"
+              name="confirmPassword"
+              [(ngModel)]="confirmPassword"
+              required
+            />
+            <div id="confirmPasswordFeedback" class="invalid-feedback">
+              Passwords doestn't match.
+            </div>
+          </div>
+        </div>
+        <div class="register-button-div">
+          <button type="submit" class="register-button">Register</button>
+        </div>
+        <div class="login-redirect">
+          <a (click)="navigateToLogin()">Have an account already?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

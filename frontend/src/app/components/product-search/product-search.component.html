@@ -1,0 +1,48 @@
+<main [class.error] = "errorFlag">
+    <ngx-ui-loader [class.loaded] = "isLoaded"></ngx-ui-loader>
+    <div class="filters-div" >
+        <div class="filters">
+            <div class="product-name-filter">
+                <label for="name-filter">Product name: </label>
+                <select name="product-name-filter" id="name-filter" [(ngModel)] = "selectedProductName" (change) = "filter()">
+                <option value="">product name</option>
+                <option *ngFor="let productName of productNames" [value] = "productName">{{productName}}</option>
+            </select></div>
+            <div class="brand-filter">
+                <label for="brand-filter">Brand:</label>
+                <select name="brand-filter" id="brand-filter" [(ngModel)] = "selectedBrand" (change) = "filter()">
+                <option value="">brand</option>
+                <option *ngFor="let brand of brands" [value]="brand">{{brand}}</option>
+            </select></div>
+            <div class="code-filter">
+                <label for="code-filter">Code:</label>
+                <select name="code-filter" id="code-filter" [(ngModel)] = "selectedCode" (change) = "filter()">
+                <option value="">code</option>
+                <option *ngFor="let code of codes" [value]="code">{{code}}</option>
+            </select></div>
+        </div>
+        <div class="search-bar">
+            <div id="search-box">
+                <input type="text" id="search-input" placeholder="Search (product name, brand , code)" [(ngModel)]="searchQuery"/>
+                 <p (click)="updateSearchQuery()"><i class="fa-solid fa-magnifying-glass"></i></p>
+              </div>
+        </div>
+    </div>
+    <div class="products" [class.disable] = "errorFlag">
+        <div class="product" *ngFor="let product of filteredProducts">
+               <div class="product-name"><h6>Product Name : </h6> {{product.productName}}</div>
+               <div class="brand"><h6>Brand : </h6> {{product.brand}}</div>
+               <div class="code"><h6>Product Code : </h6> {{product.code}}</div>
+               <div class="rating"><h6>Rating : </h6> {{product.averageRating}} / 5</div>
+               <div class="no-of-reviews"><h6>No Of Reviews : </h6> {{product.numberOfReviews}}</div>
+               <div class="link">
+                    <p (click) = "reviews(product.productName,product.brand,product.code,product.productId)">More details</p>
+               </div>
+        </div>
+    </div>
+    <div class="error-div" *ngIf="errorFlag">
+        <p><i class="fa-solid fa-magnifying-glass"></i></p>
+        <h1>"No Product Found"</h1>
+        <a routerLink="">Go Back To Home Page</a>
+    </div>
+</main>

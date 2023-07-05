@@ -1,0 +1,42 @@
+<main>
+    <div class="error" *ngIf="errorFlag || successFlag" >
+        <h4 class="text-danger" *ngIf="errorFlag">{{errorMessage}}</h4>
+        <h4 class="text-success" *ngIf="successFlag">Request successful</h4>
+    </div>
+    <div class="request-div" [class.error] = "errorFlag">
+        <div class="request-form">
+            <form (ngSubmit) = "onSubmit()">
+                <div class="row mb-3">
+                  <label for="product-name" class="col-sm-5 col-form-label">Product Name</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" [class.is-invalid] = "productNameInValid" id="product-name" name="productName" [(ngModel)] = "productName">
+                    <div id="productNameFeedback" class="invalid-feedback">
+                        Please provide a product name.
+                      </div>
+                </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="brand" class="col-sm-5 col-form-label">Brand</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" [class.is-invalid] = "brandInValid" id="brand" name="brand" [(ngModel)] = "brand">
+                    <div id="brandFeedback" class="invalid-feedback">
+                        Please provide a brand.
+                      </div>
+                </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="code" class="col-sm-5 col-form-label">Code</label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control" [class.is-invalid] = "codeInValid" id="code" name="code" [(ngModel)] = "code">
+                      <div id="codeFeedback" class="invalid-feedback">
+                        Please provide a code.
+                      </div>
+                    </div>
+                  </div>
+                <div class="btn-div mt-4">
+                    <button type="submit" class="btn  btn-primary" id="request-btn">Request</button>
+                </div>
+              </form>
+        </div>
+    </div>
+</main>
