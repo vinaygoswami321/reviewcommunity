@@ -1,0 +1,168 @@
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 60px;
+  z-index: 1;
+  background-color: rgba(0, 0, 0);
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 0 20px;
+  font-family: "Old Standard TT", serif;
+}
+
+.logo a {
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.logo img {
+  width: 60px;
+  height: 30%;
+}
+
+.links {
+  overflow: hidden;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 20px;
+}
+
+.links a {
+  margin-left: 40px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: #fff;
+  position: relative;
+  padding: 6px;
+}
+
+.links a::after {
+  content: "";
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 4px;
+  color: white;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s;
+}
+
+.links a:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.links a:active{
+   color: rgba(255, 255, 255,0.9);
+}
+
+.menu-icon {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  right: 20px;
+}
+
+.user-detail{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 40px;
+}
+
+.user-detail p{
+  font-family: "Old Standard TT", serif;
+  margin: 0;
+}
+
+.bars{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 6px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+@media only screen and (max-width: 789px) {
+
+  .logo a {
+    font-size: 1rem;
+  }
+
+  .logo img {
+    width: 50px;
+    height: 30%;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .menu-icon.active .bars:nth-child(2){
+    opacity: 0;
+  }
+
+  .menu-icon.active .bars:nth-child(1){
+    transform:  translateY(7px) rotate(45deg);
+  }
+  
+  .menu-icon.active .bars:nth-child(3){
+    transform: translateY(-11px) rotate(-45deg);
+  }
+
+  .links {
+    position: fixed;
+    top: 60px;
+    left: 0%;
+    width: 100vw;
+    height: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .links a {
+      margin-bottom: 30px;
+      margin-left:0;
+  }
+  
+  .user-detail{
+      margin-bottom: 30px;
+  }
+
+  .links.open {
+    height: 250px;
+  }
+
+  .links.open.admin{
+    height: 250px;
+  }
+}
+
+@media only screen and (max-width: 380px){
+  .logo a {
+    font-size: 0.7rem;
+  }
+
+  .logo img {
+    width: 40px;
+    height: 30%;
+  }
+}

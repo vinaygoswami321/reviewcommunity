@@ -1,0 +1,32 @@
+<main>
+    <ngx-ui-loader [class.loaded]="isLoaded"></ngx-ui-loader>
+    <div class="table-div">
+        <table class="table table-bordered align-middle">
+            <thead>
+                <tr>
+                    <th>ReviewId</th>
+                    <th>Username</th>
+                    <th>Rating</th>
+                    <th>Heading</th>
+                    <th>Comment</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let review of reviews">
+                    <td>{{review.reviewId}}</td>
+                    <td>{{review.userFirstName}} {{review.userLastName}}</td>
+                    <td>{{review.rating}} / 5</td>
+                    <td>{{review.reviewHeading}}</td>
+                    <td>{{review.reviewComment}}</td>
+                    <td>
+                        <div class="actions">
+                            <button type="button" class="btn btn-sm btn-success" (click) = "approve(review.reviewId)">Approve</button>
+                            <button type="button" class="btn btn-sm btn-danger" (click) = "reject(review.reviewId)">Reject</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
