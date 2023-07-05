@@ -1,0 +1,66 @@
+<main>
+    <ngx-ui-loader [class.loaded]="isLoaded"> </ngx-ui-loader>
+    <div class="product-info">
+        <div class="info">
+            <div class="product-name">
+                <h6>Product Name : </h6> {{product.productName}}
+            </div>
+            <div class="brand">
+                <h6>Brand : </h6> {{product.brand}}
+            </div>
+            <div class="code">
+                <h6>Product Code : </h6> {{product.code}}
+            </div>
+        </div>
+    </div>
+    <div class="post-review">
+        <div class="post-form" [class.invalid] = "isFormInValid()">
+            <form (ngSubmit) = "onSubmit()">
+                <div class="row mb-3 mt-4">
+                    <label for="heading" class="col-sm-2 col-form-label">Heading</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" [class.is-invalid] = "headingInValid" id="heading" name="heading" [(ngModel)] ="heading" placeholder = "review heading.." required>
+                        <div id="headingFeedback" class="invalid-feedback">
+                            Please provide a valid heading.
+                          </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="rating" class="col-sm-2 col-form-label">Rating</label>
+                    <div class="col-sm-10">
+                        <select id="rating" class="form-select" name = "rating" [(ngModel)] = "rating">
+                            <option selected value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="comment" class="form-label">Comment</label>
+                    <textarea class="form-control" [class.is-invalid] = "commentInValid" id="comment" rows="2" name="comment" required [(ngModel)] ="comment" placeholder = "review comment..."></textarea>
+                    <div id="commentFeedback" class="invalid-feedback">
+                        Provide comment (min: 20 & max: 400 characters).
+                      </div>
+                </div>
+                <button type="submit" class="btn btn-sm btn-primary mb-3">Post Review</button>
+            </form>
+        </div>
+    </div>
+  
+    <div class="review-list">
+        <h3>Reviews</h3>
+        <div class="review-box" *ngFor="let review of reviews">
+            <div class="review-heading"><h6>Heading :</h6> {{review.reviewHeading}}</div>
+            <div class="review-rating"><h6>Rating :</h6> {{review.rating}} / 5</div>
+            <div class="user-name"><h6>Username :</h6> {{review.userFirstName}} {{review.userLastName}}</div>
+            <div class="review-comment"><h6>Comment :</h6> {{review.reviewComment}}</div>
+        </div>
+        <div class="no-reviews" *ngIf="reviews.length == 0">
+            <h1><i class="fa-solid fa-comment-dots"></i></h1>
+            <h2>No Reviews yet</h2>
+        </div>
+    </div>
+   
+</main>

@@ -1,0 +1,22 @@
+.main{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-areas: 
+    "navbar"
+    "content";
+    grid-template-rows: 60px auto;
+}
+
+header{
+    grid-area: navbar;
+}
+
+main{
+    grid-area: content;
+}
+
+router-outlet{
+    display: block;
+    position: absolute;
+}
